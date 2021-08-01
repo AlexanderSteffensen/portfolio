@@ -10,7 +10,6 @@
     "vite-plugin-string": "^1.0.1"
   },
   "dependencies": {
-    "gsap": "^3.7.0",
     "three": "^0.130.1"
   }
 }
