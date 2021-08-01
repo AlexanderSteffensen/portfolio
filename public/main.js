@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+//import gsap from 'gsap'
 import vertexShader from './shaders/vertex.glsl'
 import fragmentShader from './shaders/fragment.glsl'
 import atmosphereVertexShader from './shaders/atmosphereVertex.glsl'

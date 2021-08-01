@@ -2,7 +2,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite serve ./public",
-    "build": "vite build ./public",
+    "build": "vite serve ./public",
     "serve": "vite preview"
   },
   "devDependencies": {
