@@ -1,8 +1,8 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite serve ./public",
-    "build": "vite serve ./public",
+    "dev": "vite public",
+    "build": "vite public",
     "serve": "vite preview"
   },
   "devDependencies": {
