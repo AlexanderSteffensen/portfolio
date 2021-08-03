@@ -1,8 +1,8 @@
 {
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite public",
-    "build": "vite build",
+    "dev": "vite",
+    "build": "vite build --base=/portfolio/dist/",
     "serve": "vite preview"
   },
   "devDependencies": {
@@ -10,6 +10,7 @@
     "vite-plugin-string": "^1.0.1"
   },
   "dependencies": {
+    "gsap": "^3.7.0",
     "three": "^0.130.1"
   }
 }

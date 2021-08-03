@@ -1,7 +1,8 @@
-import vertexShader from './shaders/vertex.glsl'
-import fragmentShader from './shaders/fragment.glsl'
-import atmosphereVertexShader from './shaders/atmosphereVertex.glsl'
-import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl'
+import './style.css';
+import vertexShader from './shaders/vertex.glsl';
+import fragmentShader from './shaders/fragment.glsl';
+import atmosphereVertexShader from './shaders/atmosphereVertex.glsl';
+import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl';
 
 let scene, camera, renderer;
 
@@ -36,8 +37,7 @@ function init() {
         star.acceleration = 0.0;
         starGeo.vertices.push(star);
     }
-
-    let sprite = new THREE.TextureLoader().load( './img/star.png' );
+    let sprite = new THREE.TextureLoader().load( '../img/star.png' );
     let starMaterial = new THREE.PointsMaterial({
         color: 0xaaaaaa,
         size: 0.7,
@@ -84,11 +84,9 @@ function init() {
         starGeo.vertices.forEach(p => p.acceleration = 0.002);
         setTimeout((() => {
             starGeo.vertices.forEach(p => p.acceleration = 0.006);
-            console.log("Skifter tid");
         }), 1000);
         setTimeout((() => {
             starGeo.vertices.forEach(p => p.acceleration = 0.012);
-            console.log("Skifter tid");
         }), 2000);
 
         animateStars();
@@ -103,10 +101,7 @@ function init() {
     document.getElementById('takeoff').addEventListener("click", takeoff);
 }
 
-
 init();
-
-
 
 function transition() {
     let curtain = document.getElementById("curtain");
@@ -139,8 +134,6 @@ function delCurtain() {
 
 }
 
-
-
 function initMainScene() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
@@ -157,7 +150,7 @@ function initMainScene() {
             fragmentShader: fragmentShader,
             uniforms: {
                 earthTexture: {
-                    value: new THREE.TextureLoader().load('./img/earth.jpg')
+                    value: new THREE.TextureLoader().load('../img/earth.jpg')
                 }
             }
         }));
@@ -183,7 +176,7 @@ function initMainScene() {
 
     //adds star background
     const starGeometry = new THREE.Geometry();
-    let sprite = new THREE.TextureLoader().load( './img/star.png' );
+    let sprite = new THREE.TextureLoader().load( '../img/star.png' );
     let starMaterial = new THREE.PointsMaterial({
         color: 0xaaaaaa,
         size: 0.7,
@@ -232,56 +225,3 @@ function initMainScene() {
     })
 
 }
-
-
-
-
-
-/*
-
-
-
-
-
-
-import './style.css'
-import * as THREE from 'three'
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-const renderer = new THREE.WebGLRenderer({
-   canvas: document.querySelector('#bg'),
-});
-
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-camera.position.setZ(30);
-
-renderer.render(scene, camera);
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({color:  '#1a3be0'})
-const torus = new THREE.Mesh(geometry, material);
-
-scene.add(torus)
-
-const light = new THREE.AmbientLight(0xffffff);
-scene.add(light)
-
-function animate() {
-   requestAnimationFrame(animate);
-
-   torus.rotation.x += 0.01;
-   torus.rotation.y += 0.005;
-   torus.rotation.z += 0.01;s
-
-   renderer.render(scene, camera);
-}
-
-animate();
-
-
- */

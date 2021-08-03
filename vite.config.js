@@ -1,3 +1,7 @@
-module.exports = {
-    root: './public'
+import vitePluginString from 'vite-plugin-string'
+
+export default {
+    plugins: [
+        vitePluginString()
+    ]
 }
