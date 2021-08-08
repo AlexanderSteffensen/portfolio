@@ -6,6 +6,11 @@ import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl';
 
 let scene, camera, renderer;
 
+let imgs = {
+    earth: document.getElementById('earth-img').href,
+    star: document.getElementById('star-img').href
+}
+
 function init() {
 
     let  stars, starGeo;
@@ -37,7 +42,7 @@ function init() {
         star.acceleration = 0.0;
         starGeo.vertices.push(star);
     }
-    let sprite = new THREE.TextureLoader().load( '../img/star.png' );
+    let sprite = new THREE.TextureLoader().load( imgs.star );
     let starMaterial = new THREE.PointsMaterial({
         color: 0xaaaaaa,
         size: 0.7,
@@ -150,7 +155,7 @@ function initMainScene() {
             fragmentShader: fragmentShader,
             uniforms: {
                 earthTexture: {
-                    value: new THREE.TextureLoader().load('../img/earth.jpg')
+                    value: new THREE.TextureLoader().load(imgs.earth)
                 }
             }
         }));
@@ -176,7 +181,7 @@ function initMainScene() {
 
     //adds star background
     const starGeometry = new THREE.Geometry();
-    let sprite = new THREE.TextureLoader().load( '../img/star.png' );
+    let sprite = new THREE.TextureLoader().load( imgs.star );
     let starMaterial = new THREE.PointsMaterial({
         color: 0xaaaaaa,
         size: 0.7,
