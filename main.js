@@ -23,10 +23,9 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({
         antialias: true,
+        canvas: document.querySelector('canvas')
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
 
     console.log(renderer.domElement);
 
@@ -96,9 +95,13 @@ function init() {
 
         animateStars();
 
-        let curtain = document.createElement("div");
-        curtain.setAttribute("id", "curtain");
-        document.getElementById("button-wrapper").appendChild(curtain);
+        let curtainOne = document.createElement("div");
+        let curtainTwo = document.createElement("div");
+        curtainOne.setAttribute("id", "curtainOne");
+        curtainTwo.setAttribute("id", "curtainTwo");
+        document.getElementById("button-wrapper").appendChild(curtainOne);
+        document.getElementById('intro-text').appendChild(curtainTwo);
+
 
         setTimeout(transition, 5000);
     }
@@ -109,15 +112,19 @@ function init() {
 init();
 
 function transition() {
-    let curtain = document.getElementById("curtain");
+    let curtainOne = document.getElementById("curtainOne");
+    let curtainTwo = document.getElementById("curtainTwo");
 
-    curtain.classList.add("screen-change");
+
+    curtainOne.classList.add("screen-change");
+    curtainTwo.classList.add("screen-change");
 
     setTimeout(delFirstScene, 1000);
     setTimeout(initMainScene, 1000);
 
     setTimeout(() => {
-        curtain.classList.remove("screen-change");
+        document.getElementById("curtainTwo").classList.remove("screen-change");
+        curtainOne.classList.remove("screen-change");
     }, 5000);
     setTimeout(delCurtain, 5000);
 }
@@ -140,10 +147,13 @@ function delCurtain() {
 }
 
 function initMainScene() {
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+    const canvasDiv = document.getElementById('canvas-side');
+    createMainPage(canvasDiv);
 
-    renderer.setSize(innerWidth, innerHeight);
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, canvasDiv.offsetWidth / canvasDiv.offsetHeight, 0.1, 1000);
+
+    renderer.setSize(canvasDiv.offsetWidth, canvasDiv.offsetHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
 
@@ -228,5 +238,64 @@ function initMainScene() {
         mouse.x = (event.clientX / innerWidth) * 2 - 1;
         mouse.y = (event.clientY / innerHeight) * 2 - 1;
     })
+
+}
+
+function createMainPage(canvasDiv) {
+    const bodyStyle = document.body.style;
+    bodyStyle.removeProperty('justify-content');
+    bodyStyle.removeProperty('align-items');
+    bodyStyle.removeProperty('width');
+    bodyStyle.removeProperty('height');
+    bodyStyle.removeProperty('display');
+
+
+    const canvasStyle = document.querySelector('canvas').style;
+    canvasStyle.removeProperty('position');
+    canvasStyle.removeProperty('top');
+    canvasStyle.removeProperty('left');
+    canvasStyle.removeProperty('z-index');
+
+    const flexDiv = document.getElementById('flex');
+    const textDiv = document.getElementById('text-side');
+    const introTextDiv = document.getElementById('intro-text');
+
+    flexDiv.classList.add('flex');
+    textDiv.classList.add('text-side');
+    canvasDiv.classList.add('canvas-side');
+    introTextDiv.classList.add('intro-text');
+
+    introTextDiv.innerHTML += "<h1>Hi there fellow <dev></h1>" +
+        "<p>My name is Alexander Steffensen and im a software student at Aalborg university (AAU). Here is my portfolio page where you can see my work and find information about me</p>" +
+        "<p>I am a person with huge ambitions and a growth mindset, so i love learning new things. I want to solve problems, that help other people with their life.</p>";
+
+    /* TODO: Add a short summary of who you are as a person and what work you like to do. A longer summary should be in the CV */
+
+    createWorkPage();
+    createContactPage();
+}
+
+/* this function creates the work documentation */
+function createWorkPage() {
+    /* This function should:
+    * 1. Create a div that holds all the work documentation
+    * 2. Add the 2 semester projects aswell as the sudoku project
+    *   - Add a picture of the project
+    *   - Add a short summary of what it does
+    *   - Add a link to the github repository
+    * */
+
+
+
+}
+
+/* this function creates the contact page at the bottom */
+function createContactPage() {
+    /* This function should create the contact page at the bottom
+    * It's called something special (the HTML tag) look at Brians work in IWP
+    * Add github, email, linkedIn and add your cv
+    * */
+
+
 
 }

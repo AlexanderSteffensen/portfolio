@@ -44,7 +44,19 @@ canvas {
     cursor: pointer;
 }
 
-#curtain {
+#curtainOne {
+    opacity: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-transition: background-color 1s linear;
+    -ms-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+}
+
+#curtainTwo {
     opacity: 100;
     top: 0;
     left: 0;
@@ -58,6 +70,41 @@ canvas {
 
 .screen-change {
     background-color: black;
+}
+
+.flex {
+    top: 0;
+    left: 0;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.text-side {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:rgb(238, 238, 238);
+}
+
+.intro-text {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    width: 70%;
+    height: 50%;
+}
+
+.canvas-side {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
 }
 
 
