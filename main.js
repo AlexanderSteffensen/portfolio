@@ -265,9 +265,9 @@ function createMainPage(canvasDiv) {
     canvasDiv.classList.add('canvas-side');
     introTextDiv.classList.add('intro-text');
 
-    introTextDiv.innerHTML += "<h1>Hi there fellow <dev></h1>" +
-        "<p>My name is Alexander Steffensen and im a software student at Aalborg university (AAU). Here is my portfolio page where you can see my work and find information about me</p>" +
-        "<p>I am a person with huge ambitions and a growth mindset, so i love learning new things. I want to solve problems, that help other people with their life.</p>";
+    introTextDiv.innerHTML += "<h1>Hi there fellow &lt;dev&gt;</h1>" +
+        "<p>My name is Alexander Steffensen and im a 3rd semester software student at Aalborg University (AAU). Here is my portfolio page where you can see my work and find information about me</p>" +
+        "<p>I am a person with a growth mindset, so i love learning new things. I want to solve problems, that help other people with their life. Scroll down to see my work</p>";
 
     /* TODO: Add a short summary of who you are as a person and what work you like to do. A longer summary should be in the CV */
 
@@ -279,10 +279,11 @@ function createMainPage(canvasDiv) {
 function createWorkPage() {
     /* This function should:
     * 1. Create a div that holds all the work documentation
-    * 2. Add the 2 semester projects aswell as the sudoku project
+    * 2. Add the work at ABK-Net as well as the sudoku project
     *   - Add a picture of the project
     *   - Add a short summary of what it does
     *   - Add a link to the github repository
+    * Also refer to the semester projects
     * */
 
 
